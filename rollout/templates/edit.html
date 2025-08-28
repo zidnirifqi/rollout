@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Edit Data Rollout</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="put">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" value="{{ rollout.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="nik">NIK</label>
+            <input type="text" class="form-control" name="nik" value="{{ rollout.nik }}" required>
+        </div>
+        <div class="form-group">
+            <label for="jenis_update">Jenis Update</label>
+            <input type="text" class="form-control" name="jenis_update" value="{{ rollout.jenis_update }}" required>
+        </div>
+        <div class="form-group">
+            <label for="aplikasi">Aplikasi</label>
+            <input type="text" class="form-control" name="aplikasi" value="{{ rollout.aplikasi }}" required>
+        </div>
+        <div class="form-group">
+            <label for="menu_update">Menu Update</label>
+            <input type="text" class="form-control" name="menu_update" value="{{ rollout.menu_update }}" required>
+        </div>
+        <div class="form-group">
+            <label for="versi_aplikasi">Versi Aplikasi</label>
+            <input type="text" class="form-control" name="versi_aplikasi" value="{{ rollout.versi_aplikasi }}" required>
+        </div>
+        <div class="form-group">
+            <label for="surat_pernyataan">Surat Pernyataan</label>
+            <input type="text" class="form-control" name="surat_pernyataan" value="{{ rollout.surat_pernyataan }}" required>
+        </div>
+        <div class="form-group">
+            <label for="tanggal_awal_rollout">Tanggal Awal Rollout</label>
+            <input type="date" class="form-control" name="tanggal_awal_rollout" value="{{ rollout.tanggal_awal_rollout.strftime('%Y-%m-%d') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="tanggal_akhir_rollout">Tanggal Akhir Rollout</label>
+            <input type="date" class="form-control" name="tanggal_akhir_rollout" value="{{ rollout.tanggal_akhir_rollout.strftime('%Y-%m-%d') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="keterangan">Keterangan</label>
+            <input type="text" class="form-control" name="keterangan" value="{{ rollout.keterangan }}">
+        </div>
+        <div class="form-group">
+            <label for="lampiran">Lampiran</label>
+            <input type="file" class="form-control" name="lampiran">
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Rollout</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .navbar {
+            background-color: #343a40; /* Dark background */
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important; /* White text */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important; /* Yellow on hover */
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 5px 0; /* Smaller padding for the footer */
+            position: relative; /* Keeps footer at the bottom of the content */
+            text-align: center; /* Centered text */
+            margin-top: 20px; /* Margin top to separate from content */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Rollout</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view">View Data</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center text-primary">Form Update Rollout</h1>
+        <form action="/" method="POST" enctype="multipart/form-data" class="bg-white p-4 border rounded shadow-sm">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="nik">NIK</label>
+                <input type="text" name="nik" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="jenis_update">Jenis Update</label>
+                <input type="text" name="jenis_update" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="aplikasi">Aplikasi</label>
+                <input type="text" name="aplikasi" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="menu_update">Menu Update</label>
+                <input type="text" name="menu_update" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="versi_aplikasi">Versi Aplikasi</label>
+                <input type="text" name="versi_aplikasi" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="surat_pernyataan">Surat Pernyataan</label>
+                <input type="text" name="surat_pernyataan" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal_awal_rollout">Tanggal Awal Rollout</label>
+                <input type="date" name="tanggal_awal_rollout" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="tanggal_akhir_rollout">Tanggal Akhir Rollout</label>
+                <input type="date" name="tanggal_akhir_rollout" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="keterangan">Keterangan</label>
+                <textarea name="keterangan" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="lampiran">Lampiran</label>
+                <input type="file" name="lampiran" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <span>&copy; 2025 Rollout App. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

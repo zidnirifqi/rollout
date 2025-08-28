@@ -1,0 +1,120 @@
+/*  gambar halaman home cuy */
+.custom-image {
+    margin-top: 100px;         
+    max-width: 100%;           
+    height: auto;              
+    border: none;              
+    border-radius: 0;          
+    box-shadow: none;          
+    background-color: transparent; 
+}
+
+/*  teks dan elemen atas */
+h1.display-4 {
+    font-weight: 700;          
+    color: #333333;            
+}
+
+p.lead {
+    font-size: 1.2rem;         /* teks deskripsi */
+    color: #555555;            
+}
+
+/* Gaya untuk tombol */
+.btn-primary {
+    background-color: #007bff; 
+        border-color: #0056b3;     
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; 
+    border-color: #003d80;    
+}
+
+.btn-secondary {
+    background-color: #6c757d; 
+    border-color: #545b62;     
+}
+
+.btn-secondary:hover {
+    background-color: #545b62; 
+    border-color: #3c4247;    
+}
+
+/*  tata letak grid */
+.row {
+    margin-top: 20px;          /* Jarak antar elemen */
+}
+
+/* background */
+body {
+    background-color: #f8f9fa; 
+    font-family: 'Arial', sans-serif; 
+}
+
+/*  container */
+.container {
+    padding-bottom: 5px;      
+}
+
+/* Gaya footer untuk halaman */
+footer {
+    margin-top: 50px;          
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+}
+/* Gaya untuk input file agar tidak terlalu besar */
+.custom-file-input {
+    max-width: 300px;    /* Maksimum lebar kolom lampiran */
+    padding: 5px;        /* Jarak dalam untuk estetika */
+    margin-top: 10px;    /* Jarak dari elemen lainnya */
+}
+
+.custom-file-input:hover {
+    border: 1px solid #007bff; /* Highlight pada saat hover */
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Efek glow */
+}
+
+/* Gaya untuk input form */
+.form-control {
+    max-width: 900px;          /* Lebar maksimum untuk input form */
+    margin-top: 10px;          /* Jarak atas */
+    padding: 10px;             /* Jarak dalam */
+    border-radius: 5px;        /* Sudut melengkung */
+    border: 1px solid #ced4da; /* Warna batas */
+}
+
+.form-control:focus {
+    border-color: #007bff;     /* Warna batas saat fokus */
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Efek glow */
+}
+
+/* Gaya untuk select box */
+select.form-control {
+    max-width: 200px;          /* Lebar maksimum untuk select box */
+}
+
+/* Gaya untuk input file */
+.custom-file-input {
+    max-width: 300px;          /* Lebar maksimum untuk input file */
+    padding: 5px;
+    margin-top: 10px;
+}
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.table th {
+    color: #6c757d;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+img {
+    border-radius: 5px;
+}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Teks -->
+        <div class="col-md-6">
+            <h1 class="display-4 fw-bold">Welcome to Rollout Web</h1>
+            <p class="lead text-muted">Use this application to manage your rollout updates efficiently.</p>
+            <!-- <a href="{{ url_for('upload') }}" class="btn btn-primary btn-lg me-2">Upload Data</a>
+            <a href="{{ url_for('view') }}" class="btn btn-secondary btn-lg">View Data</a> -->
+        </div>
+        <!-- Gambar -->
+        <div class="col-md-6 text-center">
+            <img src="{{ url_for('static', filename='images/3.png') }}" 
+                 alt="Rollout Management" 
+                 class="custom-image img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Persentase Hasil Update</h2>
+    <div class="chart-container" style="position: relative; height: 40vh; width: 60vw; margin: auto;">
+        <canvas id="barChart"></canvas>
+    </div>
+    
+    <div class="mt-4">
+        <h6>Keterangan:</h6>
+        <div id="legend" class="d-flex justify-content-start flex-wrap"></div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Warna latar belakang */
+    }
+    
+    .chart-container {
+        border: 1px solid #dee2e6; /* Border grafik */
+        border-radius: 8px; /* Sudut membulat */
+        background-color: #ffffff; /* Latar belakang putih untuk grafik */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+        max-width: 900px; /* Batasi lebar grafik */
+        margin: 0 auto; /* Pusatkan grafik */
+    }
+    
+    #legend {
+        padding: 10px 0;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        font-weight: 600; /* Gaya font lebih tebal untuk keterangan */
+    }
+    
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        display: inline-block;
+        border-radius: 4px; /* Sudut membulat pada kotak warna */
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Data dari server
+    const chartData = {{ chart_data | tojson }};
+    
+    // Proses data untuk grafik
+    const labels = Object.keys(chartData);
+    const datasets = [];
+
+    // Buat dataset untuk setiap aplikasi
+    for (const [month, updates] of Object.entries(chartData)) {
+        updates.forEach(update => {
+            const existing = datasets.find(d => d.label === update.aplikasi);
+            if (existing) {
+                existing.data[labels.indexOf(month)] = update.jumlah;
+            } else {
+                datasets.push({
+                    label: update.aplikasi,
+                    data: Array(labels.length).fill(0).map((_, i) => i === labels.indexOf(month) ? update.jumlah : 0),
+                    backgroundColor: getRandomColor(),
+                    borderWidth: 1,
+                });
+            }
+        });
+    }
+
+    // Fungsi untuk warna acak
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Buat grafik batang
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: datasets,
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`;
+                        }
+                    }
+                },
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Bulan',
+                        color: '#6c757d',
+                        font: {
+                            size: 14,
+                            weight: 'bold',
+                        },
+                    },
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Jumlah Update',
+                        color: '#6c757d',
+                        font: {
+                            size: 14,
+                            weight: 'bold',
+                        },
+                    },
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+
+    // Buat keterangan di bawah grafik
+    const legendContainer = document.getElementById('legend');
+    datasets.forEach(dataset => {
+        const legendItem = document.createElement('div');
+        legendItem.classList.add('legend-item');
+        legendItem.innerHTML = `<span class="legend-color" style="background-color: ${dataset.backgroundColor};"></span> ${dataset.label}`;
+        legendContainer.appendChild(legendItem);
+    });
+</script>
+{% endblock %}

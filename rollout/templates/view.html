@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Header -->
+    <div class="row justify-content-between align-items-center mb-4">
+        <div class="col-auto d-flex align-items-center">
+            <!-- Logo -->
+            <img src="{{ url_for('static', filename='a.png') }}" alt="Logo" width="50" class="me-2">
+            <h2 class="fw-bold text-secondary mb-0">Data Rollout</h2>
+        </div>
+        <div class="col-auto">
+            <!-- Search Form -->
+            <form method="GET" action="{{ url_for('view') }}" class="d-flex align-items-center">
+                <input 
+                    type="text" 
+                    name="search" 
+                    class="form-control border-gray shadow-sm me-1" 
+                    placeholder="Cari data rollout..." 
+                    value="{{ search_query | default('') }}"
+                    style="width: 200px;">
+                <button class="btn btn-light p-1 shadow-sm" type="submit">
+                    <img src="{{ url_for('static', filename='c.png') }}" alt="Search" width="27">
+                </button>
+            </form>
+        </div>
+    </div>
+    <a href="{{ url_for('download') }}" class="btn btn-success btn-sm">
+        Download
+        <img src="{{ url_for('static', filename='d.png') }}" alt="Download" width="20" height="20" class="ml-1">
+    </a>
+    
+    <!-- Table Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-borderless align-middle">
+                    <thead class="text-center" style="background-color: #f8f9fa;">
+                        <tr class="text-secondary">
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIK</th>
+                            <th>Aplikasi</th>
+                            <th>Jenis Update</th>
+                            <th>Menu Update</th>
+                            <th>Versi Aplikasi</th>
+                            <th>Surat Pernyataan</th>
+                            <th>Tanggal Awal</th>
+                            <th>Tanggal Akhir</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if rollouts %}
+                            {% for rollout in rollouts %}
+                            <tr class="border-bottom">
+                                <td class="text-center text-muted">{{ loop.index }}</td>
+                                <td class="fw-bold">{{ rollout.name }}</td>
+                                <td>{{ rollout.nik }}</td>
+                                <td>{{ rollout.aplikasi }}</td>
+                                <td>{{ rollout.jenis_update }}</td>
+                                <td>{{ rollout.menu_update }}</td>
+                                <td>{{ rollout.versi_aplikasi }}</td>
+                                <td>{{ rollout.surat_pernyataan }}</td>
+                                <td class="text-center">{{ rollout.tanggal_awal_rollout.strftime('%d-%m-%Y') }}</td>
+                                <td class="text-center">{{ rollout.tanggal_akhir_rollout.strftime('%d-%m-%Y') }}</td>
+                                <td>{{ rollout.keterangan }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="{{ url_for('edit', id=rollout.id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                        <a href="{{ url_for('delete', id=rollout.id) }}" 
+                                           class="btn btn-sm btn-outline-danger" 
+                                           onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="12" class="text-center text-muted">Tidak ada data ditemukan</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

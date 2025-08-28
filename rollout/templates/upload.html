@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Upload Data Rollout</h2>
+        <p class="text-muted">Form untuk mengunggah data rollout</p>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow border-0">
+        <div class="card-body p-4">
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Row 1: Name and NIK -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Nama</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Masukkan nama lengkap" 
+                            required
+                        >
+                    </div>
+                    <div class="col-md-6">
+                        <label for="nik" class="form-label">NIK</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="nik" 
+                            name="nik" 
+                            placeholder="Masukkan NIK" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Row 2: Jenis Update, Tanggal Awal, dan Tanggal Akhir -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="jenis_update" class="form-label">Jenis Update</label>
+                        <select 
+                            class="form-select rounded-pill" 
+                            id="jenis_update" 
+                            name="jenis_update" 
+                            required
+                        >
+                            <option value="" disabled selected>-- Pilih Jenis Update --</option>
+                            <option value="Office">Office</option>
+                            <option value="Store">Store</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tanggal_awal_rollout" class="form-label">Tanggal Awal Rollout</label>
+                        <input 
+                            type="date" 
+                            class="form-control rounded-pill" 
+                            id="tanggal_awal_rollout" 
+                            name="tanggal_awal_rollout" 
+                            required
+                        >
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tanggal_akhir_rollout" class="form-label">Tanggal Akhir Rollout</label>
+                        <input 
+                            type="date" 
+                            class="form-control rounded-pill" 
+                            id="tanggal_akhir_rollout" 
+                            name="tanggal_akhir_rollout" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Row 3: Aplikasi, Menu Update, Versi Aplikasi -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="aplikasi" class="form-label">Aplikasi</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="aplikasi" 
+                            name="aplikasi" 
+                            placeholder="Nama aplikasi" 
+                            required
+                        >
+                    </div>
+                    <div class="col-md-4">
+                        <label for="menu_update" class="form-label">Menu Update</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="menu_update" 
+                            name="menu_update" 
+                            placeholder="Menu yang diupdate" 
+                            required
+                        >
+                    </div>
+                    <div class="col-md-4">
+                        <label for="versi_aplikasi" class="form-label">Versi Aplikasi</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="versi_aplikasi" 
+                            name="versi_aplikasi" 
+                            placeholder="Versi aplikasi terbaru" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Row 4: Surat Pernyataan -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="surat_pernyataan" class="form-label">Surat Pernyataan</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="surat_pernyataan" 
+                            name="surat_pernyataan" 
+                            placeholder="Nomor surat pernyataan" 
+                            required
+                        >
+                    </div>
+                    <div class="col-md-6">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input 
+                            type="text" 
+                            class="form-control rounded-pill" 
+                            id="keterangan" 
+                            name="keterangan" 
+                            placeholder="Keterangan tambahan"
+                        >
+                    </div>
+                </div>
+
+                <!-- Row 5: Lampiran -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <label for="lampiran" class="form-label">Lampiran</label>
+                        <input 
+                            type="file" 
+                            class="form-control rounded-pill" 
+                            id="lampiran" 
+                            name="lampiran" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill shadow">
+                        Upload
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
